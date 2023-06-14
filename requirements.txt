@@ -1,0 +1,6 @@
+
+firebase-admin
+streamlit
+altair
+pandas
+numpy
