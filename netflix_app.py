@@ -37,12 +37,11 @@ pelis_dataframe = pd.DataFrame(pelis_dict)
 
 
 # Mostrar el dataframe
-@st.cache_data
 def display_data():
     pelis_ref = db.collection(u"pelis").stream()
     pelis_dict = [peli.to_dict() for peli in pelis_ref]
     pelis_dataframe = pd.DataFrame(pelis_dict)
-    st.caption(f"El total de películas disponibles es de: {len(pelis_dataframe)-1}")
+    st.caption(f"El total de películas disponibles es de: {len(pelis_dataframe)}")
     st.dataframe(pelis_dataframe)
     
 checkbox_mostrar = st.sidebar.checkbox("Mostrar todos los filmes")
