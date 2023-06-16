@@ -67,27 +67,36 @@ def loadByFilme(filme):
 
 #función de filtrado por título
 @st.cache_data
+# def load_data_bytitle(title):
+#     title_lower = title.lower()  # Convierte la palabra clave en lowercase
+#     pelis_ref = db.collection(u"pelis").stream()
+#     pelis_dict = [peli.to_dict() for peli in pelis_ref]
+#     pelis_dataframe = pd.DataFrame(pelis_dict)
+#     filtered_data_bytitle = pelis_dataframe[
+#         pelis_dataframe["name"].str.lower().str.contains(title_lower)  # Convierte los datos de la base de datos en minúsculas para comparar con el titulo o palabra clave que se busca
+#     ]
+#     return filtered_data_bytitle
 def load_data_bytitle(title):
-    title_lower = title.lower()  # Convierte la palabra clave en lowercase
-    pelis_ref = db.collection(u"pelis").stream()
-    pelis_dict = [peli.to_dict() for peli in pelis_ref]
-    pelis_dataframe = pd.DataFrame(pelis_dict)
-    filtered_data_bytitle = pelis_dataframe[
-        pelis_dataframe["name"].str.lower().str.contains(title_lower)  # Convierte los datos de la base de datos en minúsculas para comparar con el titulo o palabra clave que se busca
-    ]
+    title_lower = title.lower()
+    filtered_data_bytitle = pelis_dataframe[pelis_dataframe["name"].str.lower().str.contains(title_lower)]
     return filtered_data_bytitle
 
 #función filtrado por director
 @st.cache_data
+# def load_data_bydirector(director):
+#     director_lower = director.lower()  # Convierte el nombre del director en lowercase
+#     pelis_ref = db.collection(u"pelis").stream()
+#     pelis_dict = [peli.to_dict() for peli in pelis_ref]
+#     pelis_dataframe = pd.DataFrame(pelis_dict)
+#     filtered_data_bydirector = pelis_dataframe[
+#         pelis_dataframe["director"].str.lower().str.contains(director_lower)  # Convierte los datos de la base de datos en minúsculas para comparar con el nombre del director o palabra clave que se busca
+#     ]
+#     return filtered_data_bydirector
 def load_data_bydirector(director):
-    director_lower = director.lower()  # Convierte el nombre del director en lowercase
-    pelis_ref = db.collection(u"pelis").stream()
-    pelis_dict = [peli.to_dict() for peli in pelis_ref]
-    pelis_dataframe = pd.DataFrame(pelis_dict)
-    filtered_data_bydirector = pelis_dataframe[
-        pelis_dataframe["director"].str.lower().str.contains(director_lower)  # Convierte los datos de la base de datos en minúsculas para comparar con el nombre del director o palabra clave que se busca
-    ]
+    director_lower = director.lower()
+    filtered_data_bydirector = pelis_dataframe[pelis_dataframe["director"].str.lower().str.contains(director_lower)]
     return filtered_data_bydirector
+
 
 # Implementación del filtrado por filme
 sidebar.markdown("""---""")
